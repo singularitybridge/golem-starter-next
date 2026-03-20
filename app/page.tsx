@@ -1,3 +1,7 @@
+'use client';
+
+import Link from 'next/link';
+
 const APP_NAME = 'My App';
 const APP_DESCRIPTION = 'A new app built with Golem';
 

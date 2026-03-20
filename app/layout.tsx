@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
+
+const hasClerk = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 export const metadata: Metadata = {
   title: 'My App',
@@ -10,9 +13,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
+  const content = (
     <html lang="en">
       <body>{children}</body>
     </html>
   );
+
+  return hasClerk ? <ClerkProvider>{content}</ClerkProvider> : content;
 }
